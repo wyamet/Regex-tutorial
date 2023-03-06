@@ -4,7 +4,7 @@ Email validation is a crucial aspect of web development as it helps ensure that 
 
 ## Summary
 
-The regex pattern we'll be describing is `/^[^\s@]+@[^\s@]+\.[^\s@]+$/` This pattern matches any string that contains an @ symbol followed by a valid domain name, and no whitespace characters before or after the email address. The regex pattern checks for a valid domain name by looking for the presence of a period (.) character immediately after the @ symbol. The domain name is then validated by matching one or more characters after the period character.
+The regex pattern we'll be describing is `/^[^\s@]+@[^\s@]+\.[^\s@]+$/` This pattern matches any string that contains an @ symbol followed by a valid domain name, and no whitespace characters before or after the email address. The domain name is then validated by matching one or more characters after the period character.
 
 ## Table of Contents
 
@@ -26,10 +26,9 @@ The regex pattern we'll be describing is `/^[^\s@]+@[^\s@]+\.[^\s@]+$/` This pat
 ### Anchors
 
 Regex anchors are used to specify where we match a regular expression. In this case
-the regex pattern starts and ends with the `^` and `$` anchors, which indicate that the pattern must match the entire string.
+the regex pattern starts with the the `^` and ends with the `$` anchors, which indicate that the pattern must match the entire string.
 In the email regex pattern `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`, the caret `^` anchors the pattern to the start of the email address so that the regex will only match if the string starts with the local part of the email address.
 the dollar sign `$` anchors the pattern to the end of the email address so that the regex will only match if the string ends with the TLD of the email address.
-The email regex pattern starts with the "^" anchor, which indicates that the match should start at the beginning of the string (in this case, the beginning of the email address). It also ends with the "$" anchor, which indicates that the match should end at the end of the string.
 
 ### Quantifiers
 
@@ -77,10 +76,10 @@ For example, the regular expression `/[aeiou]/` matches any single vowel in the 
 
 The email regex pattern uses bracket expressions to define character classes, such as "`[a-z0-9_.-]`".
 
-- a-z: Matches any lowercase letter from "a" to "z".
-- 0-9: Matches any digit from 0 to 9.
+- `a-z`: Matches any lowercase letter from "a" to "z".
+- `0-9`: Matches any digit from 0 to 9.
 - `.!#$%&'\*+/=?^\_\` `{|}~-:` Matches a variety of special characters that are commonly allowed in email addresses.
-  We're using a bracket expression to match any character that is not whitespace or the @ symbol. The expression `[^...]` matches any character that is not in the specified set.s
+  We're using a bracket expression to match any character that is not whitespace or the @ symbol.
 
 ### Greedy and Lazy Match
 
