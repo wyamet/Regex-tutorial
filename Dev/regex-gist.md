@@ -19,6 +19,7 @@ The regex pattern we'll be describing is `/^[^\s@]+@[^\s@]+\.[^\s@]+$/` This pat
 - [Boundaries](#boundaries)
 - [Back-references](#back-references)
 - [Look-ahead and Look-behind](#look-ahead-and-look-behind)
+- [Example in JavaScript](#example-in-javascript)
 
 ## Regex Components
 
@@ -64,6 +65,12 @@ We do not use Grouping and Capturing in this expression.
 bracket expressions (also known as character classes) allow you to specify a set of characters that can match a single character in the input string. Bracket expressions are enclosed in square brackets `[ ]` and contain a list of characters or character ranges that can be matched.
 For example, the regular expression `/[aeiou]/` matches any single vowel in the input string.
 
+The bracket expression `[a-z0-9.!#$%&'*+/=?^_{|}~-]` is used in the email pattern regex to match any character that is allowed in the local part of an email address.
+(the part before the '@')
+
+- a-z: Matches any lowercase letter from "a" to "z".
+- 0-9: Matches any digit from 0 to 9.
+- .!#$%&'\*+/=?^\_\``{|}~-: Matches a variety of special characters that are commonly allowed in email addresses.
 We're using a bracket expression to match any character that is not whitespace or the @ symbol. The expression `[^...]` matches any character that is not in the specified set.
 
 ### Greedy and Lazy Match
@@ -98,7 +105,36 @@ Lookahead allows to add a condition for “what follows”. Lookbehind is simila
 
 There are no look-ahead or look-behind assertions used in this pattern.
 
+## Example in JavaScript
+
+```
+// Regular expression pattern to match email addresses
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Example email addresses to test
+const emails = [
+  'user@example.com',
+  'user.name@example.com',
+  'user+label@example.com',
+  'user-name@example.com',
+  'user@subdomain.example.com',
+  'user@127.0.0.1'
+];
+
+// Loop through the email addresses and test against the regex
+for (let email of emails) {
+  if (emailRegex.test(email)) {
+    console.log(`${email} is a valid email address`);
+  } else {
+    console.log(`${email} is not a valid email address`);
+  }
+}
+```
+
+<!-- ![Alt](/Dev/assets/email-regex.png "Title") -->
+
 ## Author
 
 My name is Wyatt Domanski, I am a full stack bootcamp student at the University of Oregon.
-[link](https://github.com/wyamet "Github").
+
+[My Github](https://github.com/wyamet "Github").
